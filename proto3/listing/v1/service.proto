@@ -4,7 +4,7 @@ package listing.v1;
 
 import "google/api/annotations.proto";
 
-option go_package = "github.com/thienkimlove/grpc/proto3/service";
+option go_package = "github.com/thienkimlove/grpc/listing";
 
 // Message represents a simple message sent to the Echo service.
 message Message {
