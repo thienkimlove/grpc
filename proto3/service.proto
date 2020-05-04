@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package listing.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/thienkimlove/grpc/proto3/service";
+
+// Message represents a simple message sent to the Echo service.
+message Message {
+    // Id represents the message identifier.
+    string id = 1;
+}
+
+// Echo service responds to incoming echo requests.
+service EchoService {
+    // Echo method receives a simple message and returns it.
+    // The message posted as the id parameter will also be returned.
+    rpc Echo(Message) returns (Message) {
+        option (google.api.http) = {
+            post: "/v1/example/echo/{id}"
+        };
+    }
+    // EchoBody method receives a simple message and returns it.
+    rpc EchoBody(Message) returns (Message) {
+        option (google.api.http) = {
+            post: "/v1/example/echo_body"
+            body: "*"
+        };
+    }
+}
