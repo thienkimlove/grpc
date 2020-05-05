@@ -1,19 +1,22 @@
 syntax = "proto3";
 
-package listing;
-
-option go_package = "github.com/thienkimlove/grpc/rpc/listing";
+package listing.v1;
 
 import "google/api/annotations.proto";
 
-message PingMessage {
-    string greeting = 1;
-}
-service Ping {
-    rpc SayHello(PingMessage) returns (PingMessage) {
+option go_package = "github.com/thienkimlove/grpc/rpc/listing";
+
+service ListingService {
+    rpc ListingRq(ListingRequest) returns (ListingResponse) {
         option (google.api.http) = {
-      post: "/1/ping"
-      body: "*"
-    };
+            get: "/test/quandm"
+        };
     }
+
+}
+
+message ListingRequest {}
+
+message ListingResponse {
+    string content = 1;
 }

@@ -30,16 +30,14 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-type PingMessage struct {
+type ListingRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Greeting string `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
 }
 
-func (x *PingMessage) Reset() {
-	*x = PingMessage{}
+func (x *ListingRequest) Reset() {
+	*x = ListingRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_service_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -47,13 +45,13 @@ func (x *PingMessage) Reset() {
 	}
 }
 
-func (x *PingMessage) String() string {
+func (x *ListingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PingMessage) ProtoMessage() {}
+func (*ListingRequest) ProtoMessage() {}
 
-func (x *PingMessage) ProtoReflect() protoreflect.Message {
+func (x *ListingRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_service_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -65,14 +63,54 @@ func (x *PingMessage) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PingMessage.ProtoReflect.Descriptor instead.
-func (*PingMessage) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListingRequest.ProtoReflect.Descriptor instead.
+func (*ListingRequest) Descriptor() ([]byte, []int) {
 	return file_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PingMessage) GetGreeting() string {
+type ListingResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Content string `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
+}
+
+func (x *ListingResponse) Reset() {
+	*x = ListingResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListingResponse) ProtoMessage() {}
+
+func (x *ListingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListingResponse.ProtoReflect.Descriptor instead.
+func (*ListingResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ListingResponse) GetContent() string {
 	if x != nil {
-		return x.Greeting
+		return x.Content
 	}
 	return ""
 }
@@ -81,20 +119,23 @@ var File_service_proto protoreflect.FileDescriptor
 
 var file_service_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
-	0x07, 0x6c, 0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x29, 0x0a, 0x0b, 0x50, 0x69, 0x6e, 0x67, 0x4d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x67, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e,
-	0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x67, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e,
-	0x67, 0x32, 0x52, 0x0a, 0x04, 0x50, 0x69, 0x6e, 0x67, 0x12, 0x4a, 0x0a, 0x08, 0x53, 0x61, 0x79,
-	0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x12, 0x14, 0x2e, 0x6c, 0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x2e,
-	0x50, 0x69, 0x6e, 0x67, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x1a, 0x14, 0x2e, 0x6c, 0x69,
-	0x73, 0x74, 0x69, 0x6e, 0x67, 0x2e, 0x50, 0x69, 0x6e, 0x67, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
-	0x65, 0x22, 0x12, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0c, 0x22, 0x07, 0x2f, 0x31, 0x2f, 0x70, 0x69,
-	0x6e, 0x67, 0x3a, 0x01, 0x2a, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x68, 0x69, 0x65, 0x6e, 0x6b, 0x69, 0x6d, 0x6c, 0x6f, 0x76, 0x65,
-	0x2f, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x72, 0x70, 0x63, 0x2f, 0x6c, 0x69, 0x73, 0x74, 0x69, 0x6e,
-	0x67, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x0a, 0x6c, 0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x2e, 0x76, 0x31, 0x1a, 0x1c, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x10, 0x0a, 0x0e, 0x4c, 0x69, 0x73,
+	0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x2b, 0x0a, 0x0f, 0x4c,
+	0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18,
+	0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x32, 0x6c, 0x0a, 0x0e, 0x4c, 0x69, 0x73, 0x74,
+	0x69, 0x6e, 0x67, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x5a, 0x0a, 0x09, 0x4c, 0x69,
+	0x73, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x71, 0x12, 0x1a, 0x2e, 0x6c, 0x69, 0x73, 0x74, 0x69, 0x6e,
+	0x67, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x6c, 0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x2e, 0x76, 0x31,
+	0x2e, 0x4c, 0x69, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x14, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0e, 0x12, 0x0c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f,
+	0x71, 0x75, 0x61, 0x6e, 0x64, 0x6d, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x68, 0x69, 0x65, 0x6e, 0x6b, 0x69, 0x6d, 0x6c, 0x6f, 0x76,
+	0x65, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x72, 0x70, 0x63, 0x2f, 0x6c, 0x69, 0x73, 0x74, 0x69,
+	0x6e, 0x67, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -109,13 +150,14 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_service_proto_goTypes = []interface{}{
-	(*PingMessage)(nil), // 0: listing.PingMessage
+	(*ListingRequest)(nil),  // 0: listing.v1.ListingRequest
+	(*ListingResponse)(nil), // 1: listing.v1.ListingResponse
 }
 var file_service_proto_depIdxs = []int32{
-	0, // 0: listing.Ping.SayHello:input_type -> listing.PingMessage
-	0, // 1: listing.Ping.SayHello:output_type -> listing.PingMessage
+	0, // 0: listing.v1.ListingService.ListingRq:input_type -> listing.v1.ListingRequest
+	1, // 1: listing.v1.ListingService.ListingRq:output_type -> listing.v1.ListingResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -130,7 +172,19 @@ func file_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PingMessage); i {
+			switch v := v.(*ListingRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListingResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -148,7 +202,7 @@ func file_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -170,72 +224,72 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// PingClient is the client API for Ping service.
+// ListingServiceClient is the client API for ListingService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type PingClient interface {
-	SayHello(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error)
+type ListingServiceClient interface {
+	ListingRq(ctx context.Context, in *ListingRequest, opts ...grpc.CallOption) (*ListingResponse, error)
 }
 
-type pingClient struct {
+type listingServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewPingClient(cc grpc.ClientConnInterface) PingClient {
-	return &pingClient{cc}
+func NewListingServiceClient(cc grpc.ClientConnInterface) ListingServiceClient {
+	return &listingServiceClient{cc}
 }
 
-func (c *pingClient) SayHello(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error) {
-	out := new(PingMessage)
-	err := c.cc.Invoke(ctx, "/listing.Ping/SayHello", in, out, opts...)
+func (c *listingServiceClient) ListingRq(ctx context.Context, in *ListingRequest, opts ...grpc.CallOption) (*ListingResponse, error) {
+	out := new(ListingResponse)
+	err := c.cc.Invoke(ctx, "/listing.v1.ListingService/ListingRq", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// PingServer is the server API for Ping service.
-type PingServer interface {
-	SayHello(context.Context, *PingMessage) (*PingMessage, error)
+// ListingServiceServer is the server API for ListingService service.
+type ListingServiceServer interface {
+	ListingRq(context.Context, *ListingRequest) (*ListingResponse, error)
 }
 
-// UnimplementedPingServer can be embedded to have forward compatible implementations.
-type UnimplementedPingServer struct {
+// UnimplementedListingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedListingServiceServer struct {
 }
 
-func (*UnimplementedPingServer) SayHello(context.Context, *PingMessage) (*PingMessage, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+func (*UnimplementedListingServiceServer) ListingRq(context.Context, *ListingRequest) (*ListingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListingRq not implemented")
 }
 
-func RegisterPingServer(s *grpc.Server, srv PingServer) {
-	s.RegisterService(&_Ping_serviceDesc, srv)
+func RegisterListingServiceServer(s *grpc.Server, srv ListingServiceServer) {
+	s.RegisterService(&_ListingService_serviceDesc, srv)
 }
 
-func _Ping_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingMessage)
+func _ListingService_ListingRq_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PingServer).SayHello(ctx, in)
+		return srv.(ListingServiceServer).ListingRq(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/listing.Ping/SayHello",
+		FullMethod: "/listing.v1.ListingService/ListingRq",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PingServer).SayHello(ctx, req.(*PingMessage))
+		return srv.(ListingServiceServer).ListingRq(ctx, req.(*ListingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Ping_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "listing.Ping",
-	HandlerType: (*PingServer)(nil),
+var _ListingService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "listing.v1.ListingService",
+	HandlerType: (*ListingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _Ping_SayHello_Handler,
+			MethodName: "ListingRq",
+			Handler:    _ListingService_ListingRq_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

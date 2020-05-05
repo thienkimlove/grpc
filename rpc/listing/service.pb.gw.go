@@ -31,46 +31,30 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 
-func request_Ping_SayHello_0(ctx context.Context, marshaler runtime.Marshaler, client PingClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PingMessage
+func request_ListingService_ListingRq_0(ctx context.Context, marshaler runtime.Marshaler, client ListingServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListingRequest
 	var metadata runtime.ServerMetadata
 
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
-	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.SayHello(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ListingRq(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_Ping_SayHello_0(ctx context.Context, marshaler runtime.Marshaler, server PingServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PingMessage
+func local_request_ListingService_ListingRq_0(ctx context.Context, marshaler runtime.Marshaler, server ListingServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListingRequest
 	var metadata runtime.ServerMetadata
 
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
-	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.SayHello(ctx, &protoReq)
+	msg, err := server.ListingRq(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-// RegisterPingHandlerServer registers the http handlers for service Ping to "mux".
-// UnaryRPC     :call PingServer directly.
+// RegisterListingServiceHandlerServer registers the http handlers for service ListingService to "mux".
+// UnaryRPC     :call ListingServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-func RegisterPingHandlerServer(ctx context.Context, mux *runtime.ServeMux, server PingServer) error {
+func RegisterListingServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ListingServiceServer) error {
 
-	mux.Handle("POST", pattern_Ping_SayHello_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ListingService_ListingRq_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -79,23 +63,23 @@ func RegisterPingHandlerServer(ctx context.Context, mux *runtime.ServeMux, serve
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Ping_SayHello_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ListingService_ListingRq_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Ping_SayHello_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ListingService_ListingRq_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterPingHandlerFromEndpoint is same as RegisterPingHandler but
+// RegisterListingServiceHandlerFromEndpoint is same as RegisterListingServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterPingHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterListingServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -115,23 +99,23 @@ func RegisterPingHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux,
 		}()
 	}()
 
-	return RegisterPingHandler(ctx, mux, conn)
+	return RegisterListingServiceHandler(ctx, mux, conn)
 }
 
-// RegisterPingHandler registers the http handlers for service Ping to "mux".
+// RegisterListingServiceHandler registers the http handlers for service ListingService to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterPingHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterPingHandlerClient(ctx, mux, NewPingClient(conn))
+func RegisterListingServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterListingServiceHandlerClient(ctx, mux, NewListingServiceClient(conn))
 }
 
-// RegisterPingHandlerClient registers the http handlers for service Ping
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "PingClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "PingClient"
+// RegisterListingServiceHandlerClient registers the http handlers for service ListingService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "ListingServiceClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "ListingServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "PingClient" to call the correct interceptors.
-func RegisterPingHandlerClient(ctx context.Context, mux *runtime.ServeMux, client PingClient) error {
+// "ListingServiceClient" to call the correct interceptors.
+func RegisterListingServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client ListingServiceClient) error {
 
-	mux.Handle("POST", pattern_Ping_SayHello_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ListingService_ListingRq_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -140,14 +124,14 @@ func RegisterPingHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Ping_SayHello_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ListingService_ListingRq_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Ping_SayHello_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ListingService_ListingRq_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -155,9 +139,9 @@ func RegisterPingHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 }
 
 var (
-	pattern_Ping_SayHello_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"1", "ping"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ListingService_ListingRq_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"test", "quandm"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
-	forward_Ping_SayHello_0 = runtime.ForwardResponseMessage
+	forward_ListingService_ListingRq_0 = runtime.ForwardResponseMessage
 )
