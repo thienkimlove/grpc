@@ -6,8 +6,8 @@ import "google/api/annotations.proto";
 
 option go_package = "github.com/thienkimlove/grpc/rpc/listing";
 
-service TestService {
-    rpc TestRq(TestRequest) returns (TestResponse) {
+service ListingService {
+    rpc ListingRq(ListingRequest) returns (ListingResponse) {
         option (google.api.http) = {
             get: "/test/quandm"
         };
@@ -15,8 +15,8 @@ service TestService {
 
 }
 
-message TestRequest {}
+message ListingRequest {}
 
-message TestResponse {
+message ListingResponse {
     string content = 1;
 }
