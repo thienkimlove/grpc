@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package listing.v1;
+package listing;
 
 option go_package = "github.com/thienkimlove/grpc/rpc/listing";
 
