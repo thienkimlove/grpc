@@ -7,8 +7,12 @@
 package listing
 
 import (
+	context "context"
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -210,4 +214,84 @@ func file_service_proto_init() {
 	file_service_proto_rawDesc = nil
 	file_service_proto_goTypes = nil
 	file_service_proto_depIdxs = nil
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConnInterface
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion6
+
+// ListingServiceClient is the client API for ListingService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type ListingServiceClient interface {
+	ListingRq(ctx context.Context, in *ListingRequest, opts ...grpc.CallOption) (*ListingResponse, error)
+}
+
+type listingServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewListingServiceClient(cc grpc.ClientConnInterface) ListingServiceClient {
+	return &listingServiceClient{cc}
+}
+
+func (c *listingServiceClient) ListingRq(ctx context.Context, in *ListingRequest, opts ...grpc.CallOption) (*ListingResponse, error) {
+	out := new(ListingResponse)
+	err := c.cc.Invoke(ctx, "/listing.v1.ListingService/ListingRq", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ListingServiceServer is the server API for ListingService service.
+type ListingServiceServer interface {
+	ListingRq(context.Context, *ListingRequest) (*ListingResponse, error)
+}
+
+// UnimplementedListingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedListingServiceServer struct {
+}
+
+func (*UnimplementedListingServiceServer) ListingRq(context.Context, *ListingRequest) (*ListingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListingRq not implemented")
+}
+
+func RegisterListingServiceServer(s *grpc.Server, srv ListingServiceServer) {
+	s.RegisterService(&_ListingService_serviceDesc, srv)
+}
+
+func _ListingService_ListingRq_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ListingServiceServer).ListingRq(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/listing.v1.ListingService/ListingRq",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ListingServiceServer).ListingRq(ctx, req.(*ListingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ListingService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "listing.v1.ListingService",
+	HandlerType: (*ListingServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListingRq",
+			Handler:    _ListingService_ListingRq_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
 }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6e65fc4-24a9-45a0-8d1b-7c863149c298" name="Default Changelist" comment="" />
+    <list default="true" id="d6e65fc4-24a9-45a0-8d1b-7c863149c298" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proto/listing/v1/service.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+            <state relative-caret-position="463">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -105,35 +107,6 @@
             <path>
               <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
               <item name="grpc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grpc" type="462c0819:PsiDirectoryNode" />
-              <item name="proto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grpc" type="462c0819:PsiDirectoryNode" />
-              <item name="proto" type="462c0819:PsiDirectoryNode" />
-              <item name="listing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grpc" type="462c0819:PsiDirectoryNode" />
-              <item name="proto" type="462c0819:PsiDirectoryNode" />
-              <item name="listing" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc" type="462c0819:PsiDirectoryNode" />
-              <item name="listing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="grpc" type="b2602c69:ProjectViewProjectNode" />
@@ -268,8 +241,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/proto/listing/v1/service.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        <state relative-caret-position="463">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
     </entry>
