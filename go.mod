@@ -1,4 +1,4 @@
-module custom_grpc
+module github.com/thienkimlove/grpc
 
 go 1.14
 
