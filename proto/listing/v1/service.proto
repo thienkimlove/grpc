@@ -13,10 +13,6 @@ service ListingService {
         };
     }
 
-    rpc ListingRegister(ListingRequest) returns (ListingResponse) {
-
-    }
-
 }
 
 message ListingRequest {}
